@@ -114,8 +114,12 @@ public class TestController {
     }
     @PostMapping("/product/delete/{id}")
     public String deleteProduct(@PathVariable String id){
-        this.productService.deleteById(Long.parseLong(id));
-        return "redirect:/home";
+        try {
+            this.productService.deleteById(Long.parseLong(id));
+            return "redirect:/home";
+        }catch (RuntimeException ex){
+            return "redirect:/home?error=" + ex.getMessage();
+        }
     }
     @GetMapping("/shoppingcart")
     public String getCartPage(Model model, HttpServletRequest req){

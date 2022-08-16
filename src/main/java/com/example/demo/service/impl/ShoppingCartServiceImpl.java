@@ -3,7 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.Product;
 import com.example.demo.model.ShoppingCart;
 import com.example.demo.model.User;
-import com.example.demo.model.exceptions.ProductAlreadyInShoppingCart;
+import com.example.demo.model.exceptions.ProductInShoppingCartException;
 import com.example.demo.model.exceptions.ProductNotFoundException;
 import com.example.demo.model.exceptions.UserNotFoundException;
 import com.example.demo.respository.ProductRepository;
@@ -44,7 +44,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public Product addProduct(Long productId, String username) {
         ShoppingCart cart = this.findUsersCart(username);
         if (cart.getProductList().stream().anyMatch(r-> Objects.equals(r.getId(), productId))){
-            throw new ProductAlreadyInShoppingCart(productId);
+            throw new ProductInShoppingCartException(productId);
         }
         Product product = this.productRepository.findById(productId).orElseThrow(()-> new ProductNotFoundException(productId));
         cart.getProductList().add(product);
