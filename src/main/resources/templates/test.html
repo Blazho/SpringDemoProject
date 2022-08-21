@@ -12,32 +12,63 @@
 </head>
 <body>
 
-<nav class="nav-menu">
-    <div class="wrapper flex-nav">
-        <h1 id="logo"><a href="#">DEMO</a> </h1>
-        <ul>
-            <li><a th:href="/home" href="home.html">Home</a></li>
-            <li><a th:href="/products" href="products.html">Products</a></li>
-            <li><a th:href="/contact" href="contact.html">Contact</a></li>
-        </ul>
-        <button onclick="openLogInForm()">Log in</button>
-        <a id="register-button" href="#">Register</a>
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <nav class="nav-menu">
+        <div class="wrapper flex-nav">
+            <h1 id="logo"><a href="#">DEMO</a> </h1>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <th:block th:if="${session.user} == null">
+                <button onclick="openLogInForm()">Log in</button>
+                <a id="register-button" href="/register">Register</a>
+            </th:block>
+            <th:block th:if="${session.user} != null">
+                <form th:action="@{/home/logout}" method="POST">
+                    <button>Log out</button>
+                </form>
+                <a id="logout-button" href="/shoppingcart">Cart</a>
+            </th:block>
+        </div>
+    </nav>
+    <div id="log-form">
+        <form th:action="@{/home/login}" th:method="POST">
+            <a id="close-button" onclick="closeLogInForm()">X</a>
+            <h3>Log in</h3>
+            <label for="username">Username</label>
+            <input id="username" name="loginUsername" type="text" placeholder="Username..">
+            <label for="password">Password</label>
+            <input id="password" name="loginPassword" type="password" placeholder="Password..">
+
+            <button type="submit">Log in</button>
+        </form>
     </div>
-</nav>
-<div id="log-form">
-    <form>
-        <button id="close-button" onclick="closeLogInForm()">X</button>
-        <h3>Log in</h3>
-        <label for="username">Username</label>
-        <input id="username" type="text" placeholder="Username..">
-        <label for="password">Password</label>
-        <input id="password" type="password" placeholder="Password..">
-        <button>Log in</button>
-    </form>
-</div>
+</th:block>
 <div class="content wrapper">
-    <h1>Welcome to the Demo-shop page</h1>
-    <p>For further functionalities log in the top right.</p>
+
+    <form class="register-form" th:action="@{/register/user}" th:method="POST">
+        <label for="register-username">Username:</label>
+        <input type="text" id="register-username" name="registerUsername" placeholder="Username..">
+
+        <label for="register-name">Name:</label>
+        <input type="text" id="register-name" name="registerName" placeholder="Name..">
+
+        <label for="register-surname">Surname:</label>
+        <input type="text" id="register-surname" name="registerSurname" placeholder="Surname..">
+
+        <label for="register-password">Password:</label>
+        <input type="password" id="register-password" name="registerPassword" placeholder="Password..">
+
+        <label for="register-repassword">Repeat password:</label>
+        <input type="password" id="register-repassword" name="registerRePassword" placeholder="Password..">
+
+        <div class="error" th:if="${hasError}" th:text="${error}"></div>
+
+        <button type="submit">Register</button>
+
+    </form>
 </div>
 <footer>
     <a href="https://github.com/Blazho?tab=repositories">Git link</a>

@@ -9,7 +9,7 @@
             </ul>
             <th:block th:if="${session.user} == null">
                 <button onclick="openLogInForm()">Log in</button>
-                <a id="register-button" href="#">Register</a>
+                <a id="register-button" href="/register">Register</a>
             </th:block>
             <th:block th:if="${session.user} != null">
                 <form th:action="@{/home/logout}" method="POST">
@@ -21,7 +21,7 @@
     </nav>
     <div id="log-form">
         <form th:action="@{/home/login}" th:method="POST">
-            <button id="close-button" onclick="closeLogInForm()">X</button>
+            <a id="close-button" onclick="closeLogInForm()">X</a>
             <h3>Log in</h3>
             <label for="username">Username</label>
             <input id="username" name="loginUsername" type="text" placeholder="Username..">

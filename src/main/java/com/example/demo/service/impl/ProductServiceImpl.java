@@ -6,7 +6,7 @@ import com.example.demo.model.Product;
 import com.example.demo.model.ShoppingCart;
 import com.example.demo.model.exceptions.CategoryNotFoundException;
 import com.example.demo.model.exceptions.ManufacturerNotFoundException;
-import com.example.demo.model.exceptions.MissingArgumentException;
+import com.example.demo.model.exceptions.MissingProductInformationException;
 import com.example.demo.model.exceptions.ProductInShoppingCartException;
 import com.example.demo.respository.CategoryRepository;
 import com.example.demo.respository.ManufacturerRepository;
@@ -47,8 +47,10 @@ public class ProductServiceImpl implements ProductService {
                                  Integer price, Long categoryId, Long manufacturerId) {
         if (name == null || name.isEmpty() ||
             quantity == null ||
-            price == null){
-            throw new MissingArgumentException();
+            price == null ||
+            categoryId == null ||
+            manufacturerId == null){
+            throw new MissingProductInformationException();
         }
         Manufacturer manufacturer = this.manufacturerRepository.findById(manufacturerId)
                 .orElseThrow( () -> new ManufacturerNotFoundException(manufacturerId));

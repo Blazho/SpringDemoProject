@@ -1,0 +1,24 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+    <form class="register-form" th:action="@{/register/user}" th:method="POST">
+        <label for="register-username">Username:</label>
+        <input type="text" id="register-username" name="registerUsername" placeholder="Username..">
+
+        <label for="register-name">Name:</label>
+        <input type="text" id="register-name" name="registerName" placeholder="Name..">
+
+        <label for="register-surname">Surname:</label>
+        <input type="text" id="register-surname" name="registerSurname" placeholder="Surname..">
+
+        <label for="register-password">Password:</label>
+        <input type="password" id="register-password" name="registerPassword" placeholder="Password..">
+
+        <label for="register-repassword">Repeat password:</label>
+        <input type="password" id="register-repassword" name="registerRePassword" placeholder="Password..">
+
+        <div class="error" th:if="${hasError}" th:text="${error}"></div>
+
+        <button type="submit">Register</button>
+
+    </form>
+</th:block>
