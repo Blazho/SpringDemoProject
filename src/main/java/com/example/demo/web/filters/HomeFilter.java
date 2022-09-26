@@ -1,5 +1,6 @@
 package com.example.demo.web.filters;
 
+import com.example.demo.model.User;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -21,7 +22,15 @@ public class HomeFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         String path = req.getServletPath();
-        if (!path.equals("/home")){
+        User user = (User) req.getSession().getAttribute("user");
+        if (!path.equals("/home") &&
+                !path.equals("/home/login") &&
+                !path.equals("/contact") &&
+                !path.equals("/register") &&
+                !path.equals("/main.css") &&
+                !path.equals("/main.js") &&
+                !path.equals("/img/blue-background.png") &&
+                user == null){
             resp.sendRedirect("/home");
         }else {
             chain.doFilter(request, response);

@@ -1,6 +1,6 @@
 <th:block xmlns:th="http://www.thymeleaf.org">
 
-    <form class="register-form" th:action="@{/register/user}" th:method="POST">
+    <form class="register-form" action="/register" th:method="POST">
         <label for="register-username">Username:</label>
         <input type="text" id="register-username" name="registerUsername" placeholder="Username..">
 
@@ -15,6 +15,12 @@
 
         <label for="register-repassword">Repeat password:</label>
         <input type="password" id="register-repassword" name="registerRePassword" placeholder="Password..">
+
+        <label for="role-user" >User</label>
+        <input type="radio" id="role-user" name="role" value="ROLE_USER">
+
+        <label for="role-admin" >Admin</label>
+        <input type="radio" id="role-admin" name="role" value="ROLE_ADMIN">
 
         <div class="error" th:if="${hasError}" th:text="${error}"></div>
 

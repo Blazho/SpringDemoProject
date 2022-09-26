@@ -22,33 +22,33 @@ public class ShoppingCartController {
     }
     @GetMapping
     public String getShoppingCartPage(Model model, HttpServletRequest req){
-        User user = (User) req.getSession().getAttribute("user");
-        if (user == null){
+        String user = req.getRemoteUser();
+        if (user == null || user.equals("")){
             model.addAttribute("hasError", true);
             model.addAttribute("error", "User is not logged in!");
         }else {
-            model.addAttribute("shoppingCartProducts", this.shoppingCartService.findUsersCart(user.getUsername()).getProductList());
+            model.addAttribute("shoppingCartProducts", this.shoppingCartService.findUsersCart(user).getProductList());
         }
         model.addAttribute("bodyContent", "shoppingcart");
         return "master-template";
     }
     @PostMapping("/delete")
     public String deleteCartProduct(@RequestParam Long productId, HttpServletRequest req){
-        User user = (User) req.getSession().getAttribute("user");
-        if (user == null){
+        String user = req.getRemoteUser();
+        if (user == null || user.equals("")){
             return "redirect:/home?error=UserIsNotLoggedIn";
         }
-        this.shoppingCartService.deleteProduct(productId, user.getUsername());
+        this.shoppingCartService.deleteProduct(productId, user);
         return "redirect:/shoppingcart";
     }
     @PostMapping("/add")
     public String addProductToCart(@RequestParam Long productId, HttpServletRequest req){
-        User user = (User) req.getSession().getAttribute("user");
-        if (user == null){
+        String user = req.getRemoteUser();
+        if (user == null || user.equals("")){
             return "redirect:/home?error=UserIsNotLoggedIn";
         }
         try {
-            this.shoppingCartService.addProduct(productId, user.getUsername());
+            this.shoppingCartService.addProduct(productId, user);
             return "redirect:/products?product=ProductAddedToShopingCart";
         }catch (RuntimeException ex){
             return "redirect:/product?error" + ex.getMessage();

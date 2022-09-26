@@ -7,28 +7,18 @@
                 <li><a href="/products">Products</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
-            <th:block th:if="${session.user} == null">
-                <button onclick="openLogInForm()">Log in</button>
-                <a id="register-button" href="/register">Register</a>
+            <th:block th:if="${#request.getRemoteUser()} == null">
+                <a class="green-button" href="/login">Log in</a>
+                <a class="blue-button" href="/register">Register</a>
             </th:block>
-            <th:block th:if="${session.user} != null">
-                <form th:action="@{/home/logout}" method="POST">
-                    <button>Log out</button>
+            <th:block th:if="${#request.getRemoteUser()} != null">
+                <form th:action="@{/logout}" method="POST">
+                    <button class="green-button">Log out</button>
                 </form>
-                <a id="logout-button" href="/shoppingcart">Cart</a>
+                <div th:text="${#request.getRemoteUser()}"></div>
+                <a class="blue-button" href="/shoppingcart">Cart</a>
             </th:block>
         </div>
     </nav>
-    <div id="log-form">
-        <form th:action="@{/home/login}" th:method="POST">
-            <a id="close-button" onclick="closeLogInForm()">X</a>
-            <h3>Log in</h3>
-            <label for="username">Username</label>
-            <input id="username" name="loginUsername" type="text" placeholder="Username..">
-            <label for="password">Password</label>
-            <input id="password" name="loginPassword" type="password" placeholder="Password..">
 
-            <button type="submit">Log in</button>
-        </form>
-    </div>
 </th:block>

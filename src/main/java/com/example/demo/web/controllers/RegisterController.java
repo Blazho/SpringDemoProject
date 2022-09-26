@@ -1,6 +1,7 @@
 package com.example.demo.web.controllers;
 
 import com.example.demo.model.User;
+import com.example.demo.model.enumeration.Role;
 import com.example.demo.service.AuthenticationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +29,15 @@ public class RegisterController {
         model.addAttribute("bodyContent", "register");
         return "master-template";
     }
-    @PostMapping("/user")
+    @PostMapping
     public String registerUser(@RequestParam String registerUsername,
                                @RequestParam String registerName,
                                @RequestParam String registerSurname,
                                @RequestParam String registerPassword,
-                               @RequestParam String registerRePassword){
+                               @RequestParam String registerRePassword,
+                               @RequestParam Role role){
         try {
-            this.authenticationService.register(registerUsername, registerName, registerSurname, registerPassword, registerRePassword);
+            this.authenticationService.register(registerUsername, registerName, registerSurname, registerPassword, registerRePassword,role);
             return "redirect:/home";
         }catch (RuntimeException ex){
             return "redirect:/register?error="+ ex.getMessage();

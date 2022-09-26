@@ -21,7 +21,7 @@
                     <td th:text="${product.getCategory().getName()}"></td>
                     <td th:text="${product.getManufacturer().getName()}"></td>
                     <td>
-                        <form th:if="${session.user} != null" th:action="@{/shoppingcart/add}" th:method="POST">
+                        <form th:if="${#request.getRemoteUser()} != null" th:action="@{/shoppingcart/add}" th:method="POST">
                             <button class="add-button" type="submit" name="productId" th:value="${product.getId()}">Add</button>
                         </form>
                         <form th:action="@{/products/add}" th:method="GET">

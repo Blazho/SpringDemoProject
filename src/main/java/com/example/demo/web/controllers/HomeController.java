@@ -15,11 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/home")
 public class HomeController {
 
-    private final AuthenticationService authenticationService;
-
-    public HomeController(AuthenticationService authenticationService) {
-        this.authenticationService = authenticationService;
-    }
 
     @GetMapping
     public String getTestPage(@RequestParam(required = false) String error,
@@ -32,24 +27,5 @@ public class HomeController {
         return "master-template";
     }
 
-    @PostMapping("/login")
-    public String logInUser(@RequestParam String loginUsername,
-                            @RequestParam String loginPassword,
-                            Model model,
-                            HttpServletRequest req){
-        try {
-            User user = this.authenticationService.logInUser(loginUsername, loginPassword);
-            req.getSession().setAttribute("user", user);
-            model.addAttribute("bodyContent", "products");
-            return "redirect:/home";
-        }catch (RuntimeException ex){
-            return "redirect:/home?error=" + ex.getMessage();
-        }
 
-    }
-    @PostMapping("/logout")
-    public String logOutUser(HttpServletRequest req){
-        req.getSession().invalidate();
-        return "redirect:/home";
-    }
 }

@@ -51,7 +51,7 @@ nav.nav-menu ul li a{
     border: 1px solid white;
 }
 
-nav.nav-menu button{
+nav.nav-menu .green-button{
     font-family: Tahoma , sans-serif;
     background: rgba(0, 176, 0, 0.9);
     padding: 6px 12px;
@@ -59,12 +59,12 @@ nav.nav-menu button{
     color: rgba(255, 255, 255, 0.9);
     border: 2px solid rgba(0, 176, 0, 0.9);
 }
-nav.nav-menu button:hover{
+nav.nav-menu .green-button:hover{
     background: rgba(255, 255, 255, 0.9);
     color: rgba(0, 176, 0, 0.9);
     border: 2px solid rgba(0, 176, 0, 0.9);;
 }
-nav.nav-menu button:active{
+nav.nav-menu .green-button:active{
     color: rgba(255, 255, 255, 0.9);
     border: 2px solid rgba(0, 176, 0, 0.9);
     background: rgba(0, 176, 0, 0.9);
@@ -74,7 +74,7 @@ nav.nav-menu button:active{
     font-family: 'Brush Script MT', cursive;
     font-size: 2em;
 }
-#register-button, #logout-button{
+.blue-button, .blue-button{
     font-family: Tahoma , sans-serif;
     background: rgba(0, 191, 255, 0.9);
     padding: 6px 12px;
@@ -82,67 +82,16 @@ nav.nav-menu button:active{
     color: rgba(255, 255, 255, 0.9);
     border: 2px solid rgba(0, 191, 255, 0.9);
 }
-#register-button:hover, #logout-button:hover{
+.blue-button:hover, .blue-button:hover{
     color: rgba(0, 191, 255, 0.9);
     background: rgba(255, 255, 255, 0.9);
     border: 2px solid rgba(255, 255, 255, 0.9);
-}
-#log-form{
-    visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-}
-#log-form form{
-    display: flex;
-    flex-direction: column;
-    border: 5px solid black;
-    padding: 12px 24px;
-    min-height: 300px;
-    justify-content: center;
-    background: gray;
-    align-items: center;
-}
-#log-form form input{
-    background: white;
-    padding: 4px 6px;
-    border-radius: 2px;
-    min-width: 60px;
-    min-height: 14px;
-    margin: 8px 0 24px 0;
 }
 #log-form form h3{
     font-size: 1.2em;
     margin-bottom: 29px;
 }
-#log-form form button{
-    background: rgba(0, 176, 0, 0.9);
-    color: black;
-    padding: 6px 8px;
-    max-width: 70px;
-    border-radius: 2px;
-}
-#log-form form button:hover, #close-button:hover{
-    background: rgba(0, 129, 0, 1);
-}
-#log-form form button:active, #close-button:active{
-    background: rgba(0, 176, 0, 0.9);
-}
-#close-button{
-    position: relative;
-    top: -30px;
-    right: -115px;
-    background: rgba(0, 176, 0, 0.9);
-    border-radius: 2px;
-    padding: 6px;
-    cursor: pointer;
-}
+
 footer{
     background: black;
     height: 50px;
@@ -243,7 +192,7 @@ body{
     border: 1px solid #00BFFFE5;
     padding: 4px 6px;
 }
-.content .add-edit-form button, .content .register-form button{
+.content .add-edit-form button, .content .register-form button, #log-form button{
     max-width: 80px;
     padding: 6px 8px;
     margin: 1px auto;
@@ -252,24 +201,24 @@ body{
     background: rgba(0, 176, 0, 0.9);
     border-radius: 5px;
 }
-.content .add-edit-form button:hover, .content .register-form button:hover{
+.content .add-edit-form button:hover, .content .register-form button:hover, #log-form button:hover{
     border: 1px solid white;
     color: rgba(0, 176, 0, 0.9);
     background: white;
 }
-.content .add-edit-form button:active, .content .register-form button:active{
+.content .add-edit-form button:active, .content .register-form button:active, #log-form button:active{
     border: 1px solid rgba(0, 176, 0, 0.9);
     color: white;
     background: rgba(0, 176, 0, 0.9);
 }
-.content .register-form{
+.content .register-form, #log-form{
     display: flex;
     flex-direction: column;
     margin: 28px 35%;
     border: 1px solid black;
     padding: 12px 24px;
 }
-.content .register-form input{
+.content .register-form input, #log-form input{
     background: white;
     margin: 8px;
     border: 1px solid #00BFFFE5;
