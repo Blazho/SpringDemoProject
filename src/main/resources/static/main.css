@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+a{
+    text-decoration: none;
+}
+.error{
+    color: red;
+    padding: 12px 18px;
+}
+div.wrapper{
+    width: 70%;
+    margin: 0 auto;
+}
+nav.nav-menu{
+    background: black;
+    height: 80px;
+    display: flex;
+}
+.flex-nav {
+    display: flex;
+    background: black;
+    align-items: center;
+    justify-content: space-around;
+}
+nav.nav-menu ul{
+    display: flex;
+    list-style: none;
+    margin-left: 30%;
+}
+nav.nav-menu ul li{
+    margin: 0 4px;
+}
+nav.nav-menu ul li a:hover{
+    background: black;
+    color: white;
+    border: 1px solid white;
+}
+nav.nav-menu ul li a{
+    color: black;
+    background: white;
+    border-radius: 5px;
+    font-size: 1.2em;
+    padding: 6px 12px;
+    border: 1px solid white;
+}
+
+nav.nav-menu .green-button{
+    font-family: Tahoma , sans-serif;
+    background: rgba(0, 176, 0, 0.9);
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(0, 176, 0, 0.9);
+}
+nav.nav-menu .green-button:hover{
+    background: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 176, 0, 0.9);
+    border: 2px solid rgba(0, 176, 0, 0.9);;
+}
+nav.nav-menu .green-button:active{
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(0, 176, 0, 0.9);
+    background: rgba(0, 176, 0, 0.9);
+}
+#logo a{
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Brush Script MT', cursive;
+    font-size: 2em;
+}
+.blue-button, .blue-button{
+    font-family: Tahoma , sans-serif;
+    background: rgba(0, 191, 255, 0.9);
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(0, 191, 255, 0.9);
+}
+.blue-button:hover, .blue-button:hover{
+    color: rgba(0, 191, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+}
+#log-form form h3{
+    font-size: 1.2em;
+    margin-bottom: 29px;
+}
+
+footer{
+    background: black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer a{
+    color: #00BFFFE5;
+}
+.content{
+    min-height: 90vh;
+    background: rgba(255, 255, 255, 0.65);
+    border-left: 3px solid #00BFFFE5;
+    border-right: 3px solid #00BFFFE5;
+    padding-top:5%
+}
+.content h1{
+    text-align: center;
+    margin: 0 18px 12px 18px;
+    padding: 12px 18px;
+    font-size: 1.8em;
+    font-family: Tahoma , sans-serif;
+    color: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px grey solid;
+}
+.content p{
+    padding: 12px 48px;
+}
+body{
+    background: url("img/blue-background.png");
+}
+.content table{
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+.content tr:nth-child(even){
+    background-color: #e6e6e6;
+}
+.content td{
+    border: 1px solid black;
+    padding: 4px 6px;
+}
+.content td .edit-button{
+    background: rgba(0, 176, 0, 0.9);
+    padding: 6px 8px;
+    border-radius: 2px;
+    color: white;
+    margin: 2px;
+}
+.content td .edit-button:hover{
+    background: rgba(0, 129, 0, 1);
+}
+.content td .edit-button:active{
+    background: rgba(0, 176, 0, 0.9);
+}
+
+.content td .delete-button{
+    background: rgba(255, 0, 0, 0.9);
+    padding: 6px 8px;
+    border-radius: 2px;
+    color: white;
+    margin: 2px;
+}
+.content td .delete-button:hover{
+    background: rgba(200, 0, 0, 0.9);
+}
+.content td .delete-button:active{
+    background: rgba(255, 0, 0, 0.9);
+}
+.content .add-button{
+    background: rgba(0, 0, 0, 0.9);
+    padding: 6px 8px;
+    border-radius: 2px;
+    color: white;
+    display: block;
+    text-align: center;
+    margin: 2px;
+}
+.content .add-button:hover{
+    background: rgba(0, 0, 0, 0.6);
+}
+.content .add-button:active{
+    background: rgba(0, 0, 0, 0.9);
+}
+.content .add-edit-form{
+    display: flex;
+    float: left;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 28px;
+    padding: 12px 24px;
+}
+.content .add-edit-form input, .content .add-edit-form select{
+    background: white;
+    margin: 8px;
+    border: 1px solid #00BFFFE5;
+    padding: 4px 6px;
+}
+.content .add-edit-form button, .content .register-form button, #log-form button{
+    max-width: 80px;
+    padding: 6px 8px;
+    margin: 1px auto;
+    border: 1px solid rgba(0, 176, 0, 0.9);
+    color: white;
+    background: rgba(0, 176, 0, 0.9);
+    border-radius: 5px;
+}
+.content .add-edit-form button:hover, .content .register-form button:hover, #log-form button:hover{
+    border: 1px solid white;
+    color: rgba(0, 176, 0, 0.9);
+    background: white;
+}
+.content .add-edit-form button:active, .content .register-form button:active, #log-form button:active{
+    border: 1px solid rgba(0, 176, 0, 0.9);
+    color: white;
+    background: rgba(0, 176, 0, 0.9);
+}
+.content .register-form, #log-form{
+    display: flex;
+    flex-direction: column;
+    margin: 28px 35%;
+    border: 1px solid black;
+    padding: 12px 24px;
+}
+.content .register-form input, #log-form input{
+    background: white;
+    margin: 8px;
+    border: 1px solid #00BFFFE5;
+    padding: 4px 6px;
+}
+
+

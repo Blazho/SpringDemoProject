@@ -1,0 +1,38 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <div class="error" th:if="${hasError}" th:text="${error}"></div>
+    <div class="error" th:if="${hasDeleted}" th:text="${message}"></div>
+    <div class="error" th:if="${productMessage}" th:text="${product}"></div>
+    <table>
+            <thead>
+            <tr>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                <td>Category</td>
+                <td>Manufacturer</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.getName()}"></td>
+                    <td th:text="${product.getQuantity()}"></td>
+                    <td th:text="${product.getPrice()}"></td>
+                    <td th:text="${product.getCategory().getName()}"></td>
+                    <td th:text="${product.getManufacturer().getName()}"></td>
+                    <td>
+                        <form th:if="${#request.getRemoteUser()} != null" th:action="@{/shoppingcart/add}" th:method="POST">
+                            <button class="add-button" type="submit" name="productId" th:value="${product.getId()}">Add</button>
+                        </form>
+                        <form th:action="@{/products/add}" th:method="GET">
+                            <button class="edit-button" type="submit" name="productId" th:value="${product.getId()}">Edit</button>
+                        </form>
+                        <form th:action="@{/products/delete}" th:method="POST">
+                            <button class="delete-button" type="submit" name="productId" th:value="${product.getId()}">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    <a class="add-button" th:href="@{/products/add}">Add new product</a>
+</th:block>

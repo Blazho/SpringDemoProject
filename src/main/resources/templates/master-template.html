@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/main.css" rel="stylesheet" type="text/css">
+    <script src="/main.js" defer></script>
+</head>
+<body>
+<header th:replace="fragments/nav-menu"></header>
+
+<div class="wrapper content">
+    <section th:replace="${bodyContent}"></section>
+</div>
+
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

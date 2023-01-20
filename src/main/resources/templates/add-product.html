@@ -1,0 +1,42 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+    <div class="error" th:if="${productMessage}" th:text="${created}"></div>
+    <form class="add-edit-form" th:action="@{/products/created}" th:method="POST">
+        <label for="product-name">Product</label>
+        <input type="text" name="productName" id="product-name" th:value="${product} != null ? ${product.getName()} : ''">
+        <label for="product-quantity">Quantity</label>
+        <input type="number" name="productQuantity" id="product-quantity" th:value="${product} != null ? ${product.getQuantity()} : ''">
+        <label for="product-price">Price</label>
+        <input type="number" name="productPrice" id="product-price" th:value="${product} != null ? ${product.getPrice()} : ''">
+        <label for="product-category">Categories</label>
+        <select id="product-category" name="productCategory">
+            <option th:if="${product} != null"
+                    th:selected="${product.getCategory() != null && product.getCategory().getId() == category.getId()}"
+                    th:each="category : ${categories}"
+                    th:text="${category.getName()}"
+                    th:value="${category.getId()}">
+            </option>
+            <option th:if="${product} == null"
+                    th:each="category : ${categories}"
+                    th:text="${category.getName()}"
+                    th:value="${category.getId()}">
+            </option>
+        </select>
+        <label for="product-manufacturer">Manufacturer</label>
+        <select id="product-manufacturer" name="productManufacturer">
+            <option th:if="${product} != null"
+                    th:selected="${product.getManufacturer() != null && product.getManufacturer().getId() == manufacturer.getId()}"
+                    th:each="manufacturer : ${manufacturers}"
+                    th:text="${manufacturer.getName()}"
+                    th:value="${manufacturer.getId()}">
+            </option>
+            <option th:if="${product} == null"
+                    th:each="manufacturer : ${manufacturers}"
+                    th:text="${manufacturer.getName()}"
+                    th:value="${manufacturer.getId()}">
+
+            </option>
+        </select>
+        <button type="submit">Add</button>
+    </form>
+</th:block>

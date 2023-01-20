@@ -1,0 +1,11 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+        <h1>Welcome to the Demo-shop page</h1>
+        <th:block th:if="${session.user == null}">
+                <p>For further functionalities log in the top right.</p>
+        </th:block>
+        <th:block th:if="${session.user != null}">
+                <p>Visit products page to check available products.</p>
+        </th:block>
+        <p class="error" th:if="${hasError}" th:text="${error}"></p>
+
+</th:block>

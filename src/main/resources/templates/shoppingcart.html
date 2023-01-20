@@ -1,0 +1,36 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+
+    <div class="error" th:if="${hasError}" th:text="${error}"></div>
+    <table th:if="!${hasError}">
+        <thead>
+        <tr>
+            <td>Product</td>
+            <td>Quantity</td>
+            <td>Price</td>
+            <td>Category</td>
+            <td>Manufacturer</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${shoppingCartProducts}">
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getQuantity()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td th:text="${product.getCategory().getName()}"></td>
+            <td th:text="${product.getManufacturer().getName()}"></td>
+            <td>
+                <form>
+                    <button class="edit-button" type="submit" name="productId" th:value="${product.getId()}">Edit
+                    </button>
+                </form>
+                <form th:action="@{/shoppingcart/delete}" th:method="POST">
+                    <button class="delete-button" type="submit" name="productId" th:value="${product.getId()}">Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</th:block>
